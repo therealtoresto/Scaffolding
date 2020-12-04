@@ -48,15 +48,16 @@ const createForm = async (entity, id) => {
         form.appendChild(br);
     }
     const button = document.createElement('button');
-    button.innerHTML = 'save';
+    button.innerHTML = 'Save';
     button.onclick = () => {
         const instance = {};
         for (const field in schema) {
             instance[field] = inputs[field].value;
-        };
-        form.appendChild(button);
-        document.body.appendChild(form);
+        }
+        api.update(id, instance);
     };
+    form.appendChild(button);
+    document.body.appendChild(form);
+};
 
-    createForm('user', 1000);
-}
+createForm('sensor', 2000);
